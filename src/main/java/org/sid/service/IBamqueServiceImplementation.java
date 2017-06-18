@@ -67,7 +67,7 @@ public class IBamqueServiceImplementation implements IBamqueService{
 	@Override
 	public void virement(String codecpte1, String codecpte2, double montant) {
 		retirer(codecpte1, montant);
-		verser(codecpte1, montant);
+		verser(codecpte2, montant);
 		
 	}
 

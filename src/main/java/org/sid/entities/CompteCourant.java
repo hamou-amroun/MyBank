@@ -14,7 +14,8 @@ public class CompteCourant extends Compte {
 		super();
 	}
 
-	public CompteCourant(String codeCompte, Date dateCreation, double solde, Client client, double decouvert) {
+	public CompteCourant(String codeCompte, Date dateCreation,
+			double solde, Client client, double decouvert) {
 		super(codeCompte, dateCreation, solde, client);
 		this.decouvert = decouvert;
 	}
