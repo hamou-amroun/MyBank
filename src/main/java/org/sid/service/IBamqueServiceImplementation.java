@@ -54,8 +54,10 @@ public class IBamqueServiceImplementation implements IBamqueService{
 			faciliteCaisse = ((CompteCourant) cpt).getDecouvert() ;
 		}
 		
-		if (cpt.getSolde() + faciliteCaisse < montant ) 
-			throw new RuntimeException("Impossible Solde + decouver sont inferieur au montatnt");
+		if (cpt.getSolde() + faciliteCaisse < montant ) {
+			throw new RuntimeException("Impossible Solde plus decouver sont inferieur au montatnt");
+		}
+			
 		
 		Retrait rt = new Retrait(new Date(), montant, cpt);
 		operationRepository.save(rt);
@@ -66,6 +68,9 @@ public class IBamqueServiceImplementation implements IBamqueService{
 
 	@Override
 	public void virement(String codecpte1, String codecpte2, double montant) {
+		
+		if(codecpte1.equals(codecpte2)) 
+			throw new RuntimeException("Virement impossible dans le meme Compte");
 		retirer(codecpte1, montant);
 		verser(codecpte2, montant);
 		
